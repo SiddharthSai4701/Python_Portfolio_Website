@@ -10,7 +10,7 @@ def send_email(message):
     load_dotenv()
 
     host = "smtp.gmail.com"
-    port = 465
+    port = 587
 
     username = "sidvsai@gmail.com"
     password = os.getenv("PASSWORD")
