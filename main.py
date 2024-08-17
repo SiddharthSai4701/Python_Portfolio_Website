@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 st.set_page_config(layout="wide")
 
@@ -20,3 +21,28 @@ with col2:
 
 
 st.text("Below are the projects I've worked on!")
+data = pd.read_csv("data.csv", sep=";")
+
+# Add an empty column to separate the projects
+# The listg values contain the ratios of the widths of the coulmns
+# Eg col3 is 3 times larger than empty_col
+col3, empty_col, col4 = st.columns([1.5, 0.5, 1.5])
+
+# 20 projects
+# First column (col3) will have the first 10 projects
+# Second column (col4) will have the next 10 projects
+with col3:
+    for index, row in data[:10].iterrows():
+        st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])
+        # st.write("[Source Code](https://github.com/SiddharthSai4701/forage-lyft-starter-repo)")
+        st.write(f"[Source Code]({row['url']})")
+
+with col4:
+    for index, row in data[10:].iterrows():
+        st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])
+        # st.write("[Source Code](https://github.com/SiddharthSai4701/forage-lyft-starter-repo)")
+        st.write(f"[Source Code]({row['url']})")
