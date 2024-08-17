@@ -7,5 +7,12 @@ with st.form(key="email_form"):
     text = st.text_area("Your message")
     button = st.form_submit_button()
 
+    message = f"""\
+Subject: Python Portfolio Website has a response from {user_email}
+
+From: {user_email}
+{text}
+"""
     if button:
-        send_email(user_email, text)
+        send_email(message)
+        st.info("Email sent successfully!")
