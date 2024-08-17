@@ -17,3 +17,6 @@ with col2:
     I'd love to connect and collaborate so feel free to connect with me on LinkedIn!
     """
     st.info(content)
+
+
+st.text("Below are the projects I've worked on!")
